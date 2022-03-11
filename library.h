@@ -6,6 +6,8 @@
 #include <iomanip>
 #include <bits/stdc++.h>
 using namespace std;
+
+//* returns length of a string
 int len(const string& str)
 {
     int length = 0;
@@ -14,7 +16,7 @@ int len(const string& str)
     }
     return length;
 }
-
+//* returns true if strings in parametres are the same
 bool compare(const string &s1, const string &s2) {
 	int count = 0;
 	for (int i = 0; i < s1.size(); i++) {
@@ -26,11 +28,11 @@ bool compare(const string &s1, const string &s2) {
 	else
 		return false;
 }
-
-bool exists(const string& s1, char c) {
+//* returns if the charactere in param exists in string
+bool exists(const string& string, char c) {
 	bool exists;
-	for (int i = 0; i < s1.size(); i++) {
-		if (s1[i] == c)
+	for (int i = 0; i < string.size(); i++) {
+		if (string[i] == c)
 			exists = true;
 	}
 	if (exists) 
@@ -39,6 +41,7 @@ bool exists(const string& s1, char c) {
 		return false;
 }
 
+//* NOT USED : splits a string into words
 string split(const string &chaine) {
 	char str[100], *ptr;
 	string result;
@@ -54,6 +57,7 @@ string split(const string &chaine) {
 	}
 	return result;
 }
+//* checks if a string is an operator
 bool isoperator(const string& s) {
 	vector <string> operators = {"*", "=", "==", "+", "-", "/", "%", "!", "#", "<", ">", "!="};
     for( int i = 0; i < operators.size(); i++) {
@@ -82,11 +86,10 @@ bool isnumber(const string& str) {
         if (c == '.')
                 count++;
     }
-    if(count != 1)
+    if(count > 1)
         return false;
     return true;
 }
-
 bool not_a_space(const string& str)
 {
     char* token = strtok(const_cast<char*>(str.c_str()), " ");

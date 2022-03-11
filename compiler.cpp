@@ -10,7 +10,7 @@
 #pragma execution_character_set( "utf-8" )
 #define colWidth 15
 using namespace std;
-
+//* OOP aproach for easy debugging
 class element {
 	vector <string> value;
 	string name;
@@ -58,7 +58,7 @@ int main()
 			}
 		}
 		//* Numbers Detection
-		if (isnumber(File_words[i]) and (not_a_space(File_words[i]) == true)) {
+		if (isnumber(File_words[i]) and not_a_space(File_words[i])) {
 				numbers.push(File_words[i]);
 				pushed = true;
 		}
@@ -82,38 +82,38 @@ int main()
 		}
 		pushed = false;
 	}
-	//* Console Output 
+	//* Console Output
 	cout << setfill('*') << setw(3*colWidth) << "*" << endl;
 	cout << setfill(' ') << fixed;
 	cout << setw(colWidth) << "mots" << setw(colWidth) << "valeur" << endl;
 	cout << setfill('*') << setw(3*colWidth) << "*" << endl;
 	cout << setfill(' ') << fixed;
-	//* List 1 : IDs 
+	//* List 1 : IDs
 	for(int i = 0; i < IDs.size(); i++) {
 		cout << setprecision(0) << setw(colWidth) << IDs.show(i) << setprecision(4) << 
 		setw(colWidth)<< "ID" << endl;
 	}
-	//* List 2 : key words 
+	//* List 2 : key words
 	for(int i = 0; i < keys.size(); i++) {
 		cout << setprecision(0) << setw(colWidth) << keys.show(i) << setprecision(4) << 
 		setw(colWidth)<< "mot cle" << endl;
 	}
-	//* List 3 : numbers 
+	//* List 3 : numbers
 	for(int i = 0; i < numbers.size(); i++) {
 		cout << setprecision(0) << setw(colWidth) << numbers.show(i) << setprecision(4) << 
 		setw(colWidth)<< "nombre" << endl;
 	}
-	//* List 4 : operators 
+	//* List 4 : operators
 	for(int i = 0; i < operators.size(); i++) {
 		cout << setprecision(0) << setw(colWidth) << operators.show(i) << setprecision(4) << 
 		setw(colWidth)<< "operateur" << endl;
 	}
-	//* List 5 : strings 
+	//* List 5 : strings
 	for(int i = 0; i < strings.size(); i++) {
 		cout << setprecision(0) << setw(colWidth) << strings.show(i) << setprecision(4) << 
 		setw(colWidth)<< "chaine" << endl;
 	}
-	//* List 6 : unidentified 
+	//* List 6 : unidentified
 	for(int i = 0; i < others.size(); i++) {
 		cout << setprecision(0) << setw(colWidth) << others.show(i) << setprecision(4) << 
 		setw(colWidth)<< "autres" << endl;
