@@ -47,9 +47,9 @@ int main()
 		File_words.push_back(File_word);
 	}
 	File.close();
-	//* For loop to treat every word in file.txt ----------------------------------------->>
+	//* For loop to treat every word in file.txt 
 	for (int i = 0; i < File_words.size(); i++) {
-		//* Keys Detection --------------------------------------------------------------->>
+		//* Keys Detection 
 		for (int z = 0; z < Dict_words.size(); z++) {
 			if (File_words[i].compare(Dict_words[z]) == 0) {
 				keys.push(File_words[i]);
@@ -57,7 +57,7 @@ int main()
 				break;
 			}
 		}
-		//* Numbers Detection ------------------------------------------------------------>>
+		//* Numbers Detection
 		if (isnumber(File_words[i]) and (not_a_space(File_words[i]) == true)) {
 				numbers.push(File_words[i]);
 				pushed = true;
