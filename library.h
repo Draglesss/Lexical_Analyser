@@ -90,17 +90,12 @@ bool isnumber(const string& str) {
         return false;
     return true;
 }
-bool not_a_space(const string& str)
-{
+bool not_a_space(const string& str) {
     char* token = strtok(const_cast<char*>(str.c_str()), " ");
-
-    while (token != NULL)
-    {   
-        if (*token != ' ')
-        {   
+    while (token != NULL) {
+        if (*token != ' ')  
             return true;
-        }   
-    }   
+    }
     return false;
 }
 

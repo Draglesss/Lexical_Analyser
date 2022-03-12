@@ -22,14 +22,14 @@ class element {
 		value.push_back(str);
 		cout << str << " pushed to " << name << endl;
 	}
-	string show(int i) const {
+	string operator [](int i) const {
 		return value[i];
-	}
-	~element() {
-		value.clear();
 	}
 	int size() const {
 		return value.size();
+	}
+	~element() {
+		value.clear();
 	}
 };
 int main()
@@ -47,9 +47,9 @@ int main()
 		File_words.push_back(File_word);
 	}
 	File.close();
-	//* For loop to treat every word in file.txt 
+	//* For loop to treat every word in file.txt
 	for (int i = 0; i < File_words.size(); i++) {
-		//* Keys Detection 
+		//* Keys Detection
 		for (int z = 0; z < Dict_words.size(); z++) {
 			if (File_words[i].compare(Dict_words[z]) == 0) {
 				keys.push(File_words[i]);
@@ -90,32 +90,32 @@ int main()
 	cout << setfill(' ') << fixed;
 	//* List 1 : IDs
 	for(int i = 0; i < IDs.size(); i++) {
-		cout << setprecision(0) << setw(colWidth) << IDs.show(i) << setprecision(4) << 
+		cout << setprecision(0) << setw(colWidth) << IDs[i] << setprecision(4) << 
 		setw(colWidth)<< "ID" << endl;
 	}
 	//* List 2 : key words
 	for(int i = 0; i < keys.size(); i++) {
-		cout << setprecision(0) << setw(colWidth) << keys.show(i) << setprecision(4) << 
+		cout << setprecision(0) << setw(colWidth) << keys[i] << setprecision(4) << 
 		setw(colWidth)<< "mot cle" << endl;
 	}
 	//* List 3 : numbers
 	for(int i = 0; i < numbers.size(); i++) {
-		cout << setprecision(0) << setw(colWidth) << numbers.show(i) << setprecision(4) << 
+		cout << setprecision(0) << setw(colWidth) << numbers[i] << setprecision(4) << 
 		setw(colWidth)<< "nombre" << endl;
 	}
 	//* List 4 : operators
 	for(int i = 0; i < operators.size(); i++) {
-		cout << setprecision(0) << setw(colWidth) << operators.show(i) << setprecision(4) << 
+		cout << setprecision(0) << setw(colWidth) << operators[i] << setprecision(4) << 
 		setw(colWidth)<< "operateur" << endl;
 	}
 	//* List 5 : strings
 	for(int i = 0; i < strings.size(); i++) {
-		cout << setprecision(0) << setw(colWidth) << strings.show(i) << setprecision(4) << 
+		cout << setprecision(0) << setw(colWidth) << strings[i] << setprecision(4) << 
 		setw(colWidth)<< "chaine" << endl;
 	}
 	//* List 6 : unidentified
 	for(int i = 0; i < others.size(); i++) {
-		cout << setprecision(0) << setw(colWidth) << others.show(i) << setprecision(4) << 
+		cout << setprecision(0) << setw(colWidth) << others[i] << setprecision(4) << 
 		setw(colWidth)<< "autres" << endl;
 	}
   	return 0;
