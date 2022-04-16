@@ -31,6 +31,13 @@ class element {
 	~element() {
 		value.clear();
 	}
+	void print() const {
+		cout << name << ": ";
+		for (int i = 0; i < value.size(); i++) {
+			cout << value[i] << " ";
+		}
+		cout << endl;
+	}
 };
 int main()
 {

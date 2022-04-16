@@ -41,22 +41,6 @@ bool exists(const string& string, char c) {
 		return false;
 }
 
-//* NOT USED : splits a string into words
-string split(const string &chaine) {
-	char str[100], *ptr;
-	string result;
-	for(int i = 0; i <= len(chaine); i++) {
-		str[i] = chaine[i];
-	}
-	ptr = strtok(str, " ");
-	cout << str << endl;
-	for(int i = 0; i <= len(ptr); i++) {
-		result[i] = ptr[i];
-		cout << ptr[1];
-		break;
-	}
-	return result;
-}
 //* checks if a string is an operator
 bool isoperator(const string& s) {
 	vector <string> operators = {"*", "=", "==", "+", "-", "/", "%", "!", "#", "<", ">", "!="};
@@ -66,6 +50,7 @@ bool isoperator(const string& s) {
     }
     return false;
 }
+
 bool isstring(const string& str) {
 	int count = 0;
 	for (char const &c : str) {
@@ -98,6 +83,14 @@ bool not_a_space(const string& str) {
     }
     return false;
 }
+bool is_a_space(char& c) {
+    if (c == ' ')
+        return true;
+    else
+        return false;
+}
+
+
 
 bool isID(const string& str) {
     for(auto c : str) {

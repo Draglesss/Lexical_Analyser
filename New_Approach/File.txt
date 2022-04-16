@@ -1,0 +1,15 @@
+ #include <iostream>
+ using namespace std;
+ inta=0 ;
+ int b="Hello";
+ if(a==b) {
+  return true;
+ }
+ else {
+  return false;
+ }
+ string s="string";
+ float f=0.5;
+ 2test=0.2.;
+ test=0.2;
+ te*st floa¨t _test_ te_st_;

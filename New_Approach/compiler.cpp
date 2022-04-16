@@ -1,11 +1,13 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <sstream>
 #include <vector>
 #include <sstream>
 #include <iomanip>
 #include <bits/stdc++.h>
 #include <windows.h>
+#include <algorithm>
 #include "library.h"
 #pragma execution_character_set( "utf-8" )
 #define colWidth 15
@@ -34,54 +36,58 @@ class element {
 };
 int main()
 {
-	string line, word, Dict_word, File_word;
-	vector <string> Dict_words, File_words;
-	element keys("keys"), others("others"), numbers("numbers"), operators("operators"), strings("strings"), IDs("IDs");
+    std::stringstream ss;
+	string line, word, Dict_word, File_pack, Pack_word, temp, ID_temp;
+	vector <string> Dict_words, Pack_words, File_packs;
+    vector <char> File_pack_chars;
+	element	errors("errors"), keys("keys"), others("others"), numbers("numbers"), 
+			operators("operators"), strings("strings"), IDs("IDs");
 	ifstream File("File.txt"); //* step 1 : reading file
 	ifstream Dictionary("Dictionnaire.txt"); //* step 2 : linking Dictionary
-	bool pushed = false;
+	bool pushed_key = false, record = false;
+    int pushed_chars = 0;
 	while(getline(Dictionary, Dict_word, '\n')) {
 		Dict_words.push_back(Dict_word);
 	}
-	while(getline(File, File_word, ' ')) {
-		File_words.push_back(File_word);
+	while(getline(File, File_pack, ';')) {
+		File_packs.push_back(File_pack);
+        //cout << File_pack << endl;
 	}
 	File.close();
-	//* For loop to treat every word in file.txt
-	for (int i = 0; i < File_words.size(); i++) {
-		//* Keys Detection
-		for (int z = 0; z < Dict_words.size(); z++) {
-			if (File_words[i].compare(Dict_words[z]) == 0) {
-				keys.push(File_words[i]);
-				pushed = true;
-				break;
+	//* For loop to treat every pack in file.txt
+	for(int i = 0; i < File_packs.size(); i++) { //* all File lines till their ; (pack)
+        //cout << File_packs[i] << ':' << endl;
+        for(int j = 0; j < File_packs[i].size() ;j++) { //* every pack in packs
+            //cout << File_packs[i][j] << endl;
+			if(File_packs[i][j] == '='){
+				record = false;
+				if(isID(ID_temp)) {
+					IDs.push(ID_temp);
+				}
+				temp.clear();
 			}
-		}
-		//* Numbers Detection
-		if (isnumber(File_words[i]) and not_a_space(File_words[i])) {
-				numbers.push(File_words[i]);
-				pushed = true;
-		}
-		if (!pushed and (not_a_space(File_words[i]) == true) and !exists(File_words[i], '\n')) {
-			if(isID(File_words[i])) {
-				IDs.push(File_words[i]);
-				pushed = true;
+			File_pack_chars.push_back(File_packs[i][j]);
+			temp.push_back(File_packs[i][j]);
+			if(record) {
+				ID_temp.push_back(File_packs[i][j]);
 			}
-			else if(isstring(File_words[i])) {
-				strings.push(File_words[i]);
-				pushed = true;
+			for (int z = 0; z < Dict_words.size(); z++) {
+				if (temp.compare(Dict_words[z]) == 0) {
+					keys.push(temp);
+					pushed_key = true;
+					record = true;
+					temp.clear();
+					break;
+				}
 			}
-			else if(isoperator(File_words[i])) {
-				operators.push(File_words[i]);
-				pushed = true;
+			if(is_a_space(File_packs[i][j])) {
+				temp.clear();
+				cout << "cleared temp" << endl;
+				if(pushed_key)
+					record = true;
 			}
-			else if(!pushed){
-				others.push(File_words[i]);
-				pushed = true;
-			}
-		}
-		pushed = false;
-	}
+        }
+    }
 	//* Console Output
 	cout << setfill('*') << setw(3*colWidth) << "*" << endl;
 	cout << setfill(' ') << fixed;
